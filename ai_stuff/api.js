@@ -97,9 +97,11 @@ class LangflowClient {
   "HuggingFaceInferenceAPIEmbeddings-e77E1": {},
   "HuggingFaceInferenceAPIEmbeddings-dzC86": {},
   "GroqModel-RAOBx": {},
-  "TavilyAISearch-wFeAm": {},
   "SpiderTool-F6n1J": {},
-  "Prompt-mB2cg": {}
+  "Prompt-mB2cg": {},
+  "TavilyAISearch-TAxzB": {},
+  "ParseJSONData-l5wxq": {},
+  "ParseData-WqIJ5": {}
 };
   
     try {

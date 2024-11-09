@@ -22,33 +22,16 @@ def setup_driver():
 
 def clean_content(content):
     """Clean and deduplicate content"""
-    # Remove empty strings
-    content = [text.strip() for text in content if text.strip()]
-    
     # Remove duplicates while maintaining order
     seen = set()
     cleaned_content = []
     for item in content:
-        if item not in seen:
-            seen.add(item)
+        item_text = item["text"]
+        if item_text not in seen:
+            seen.add(item_text)
             cleaned_content.append(item)
     
-    # Group related content
-    final_content = []
-    current_section = []
-    
-    for item in cleaned_content:
-        if item.startswith(('1.', '2.', '3.', '4.', '5.', '6.', '7.', '8.', '9.', '10.', '11.', '12.', '13.', '14.', '15.')):
-            if current_section:
-                final_content.append('\n'.join(current_section))
-            current_section = [item]
-        else:
-            current_section.append(item)
-    
-    if current_section:
-        final_content.append('\n'.join(current_section))
-    
-    return final_content
+    return cleaned_content
 
 def create_pdf(content, filename='blog_content.pdf'):
     """Create a PDF file with the scraped content"""
@@ -68,20 +51,21 @@ def create_pdf(content, filename='blog_content.pdf'):
         parent=styles['Normal'],
         fontSize=12,
         leading=14,
-        spaceAfter=15
+        spaceAfter=12,
+        spaceBefore=12
     )
     
     # Build PDF content
     pdf_content = []
     
     # Add title
-    pdf_content.append(Paragraph("Eco-Friendly Products Blog Content", title_style))
+    pdf_content.append(Paragraph("Blog Content", title_style))
     pdf_content.append(Spacer(1, 20))
     
-    # Add content sections
-    for text in content:
+    # Add paragraphs
+    for item in content:
+        text = item["text"]
         pdf_content.append(Paragraph(text, body_style))
-        pdf_content.append(Spacer(1, 10))
     
     # Generate PDF
     doc.build(pdf_content)
@@ -89,32 +73,30 @@ def create_pdf(content, filename='blog_content.pdf'):
     return filename
 
 def scrape_blog_content(url):
-    """Scrape blog content from specified selectors"""
+    """Scrape all paragraph content from the page"""
     driver = setup_driver()
     try:
         driver.get(url)
-        time.sleep(5)
+        time.sleep(5)  # Give the page time to load
         content = []
         
-        selectors = [
-            ".shopify-section__blog *",
-            "div.post_content"
-        ]
-        
-        for selector in selectors:
-            try:
-                elements = WebDriverWait(driver, 10).until(
-                    EC.presence_of_all_elements_located((By.CSS_SELECTOR, selector))
-                )
-                
-                for element in elements:
-                    text = element.text.strip()
-                    if text:
-                        content.append(text)
-                
-            except Exception as e:
-                print(f"Error with selector {selector}: {str(e)}")
-                continue
+        try:
+            # Find all paragraph elements
+            paragraphs = WebDriverWait(driver, 10).until(
+                EC.presence_of_all_elements_located((By.TAG_NAME, "p"))
+            )
+            
+            # Extract text from each paragraph
+            for p in paragraphs:
+                text = p.text.strip()
+                if text:  # Only add non-empty paragraphs
+                    content.append({
+                        "text": text,
+                        "type": "paragraph"
+                    })
+                    
+        except Exception as e:
+            print(f"Error finding paragraphs: {str(e)}")
         
         return content
         
@@ -126,7 +108,7 @@ def scrape_blog_content(url):
         driver.quit()
 
 def main():
-    url = "https://www.onyalife.com/a/blog/post/eco-friendly-products"
+    url = "https://litextension.com/blog/eco-friendly-products-examples/"
     
     # Scrape content
     print("Scraping content...")
