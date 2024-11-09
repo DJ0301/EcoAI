@@ -4,13 +4,15 @@ import './Hero.css'; // Import the CSS file for styling
 
 const LandingPage = () => {
   const [loading, setLoading] = useState(false);
+  const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
 
   const goToChatbot = () => {
+    if (inputValue.trim() === '') return; // Prevent navigation if input is empty
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      navigate('/chatpage');
+      navigate('/chatpage', { state: { prefillMessage: inputValue } });
     }, 2000);
   };
 
@@ -28,7 +30,7 @@ const LandingPage = () => {
           {/* Search bar and button section */}
           <div className="flex justify-center items-center space-x-4">
             <div className="w-full md:w-1/2">
-              <form className="flex items-center w-full">
+              <form className="flex items-center w-full" onSubmit={(e) => e.preventDefault()}>
                 <label htmlFor="simple-search" className="sr-only">Search</label>
                 <div className="relative w-full">
                   <input 
@@ -36,6 +38,8 @@ const LandingPage = () => {
                     id="simple-search" 
                     className="block w-full p-3 pl-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
                     placeholder="What are some tips to reduce my carbon footprint?" 
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
                     required 
                   />
                 </div>

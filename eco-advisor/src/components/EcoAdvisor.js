@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { handleChat } from '../api/chat';
 import ReactMarkdown from 'react-markdown';
 import botIcon from '../boticon.png';
@@ -12,6 +13,16 @@ export function EcoAdvisor() {
   const messageInputRef = useRef(null);
   const messagesEndRef = useRef(null);
   const recognitionRef = useRef(null);
+  const location = useLocation();
+  const prefillProcessed = useRef(false); // Track if prefill has been processed
+
+  useEffect(() => {
+    if (location.state?.prefillMessage && messages.length === 0 && !prefillProcessed.current) {
+      const prefillMessage = location.state.prefillMessage;
+      handleSubmit(prefillMessage);
+      prefillProcessed.current = true; // Mark prefill as processed
+    }
+  }, [location.state, messages.length]);
 
   const handleSubmit = async (message, productLink) => {
     if (showInitialBubbles) setShowInitialBubbles(false);

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Navbar.css'; // Import the CSS file for styling
 
 const Navbar = () => {
   const [loading, setLoading] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Function to navigate to the chatbot page with a loading effect
   const goToChatbot = () => {
@@ -19,18 +20,23 @@ const Navbar = () => {
   // Effect to handle scroll event
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 50 || location.pathname === '/chatpage') {
         setIsCollapsed(true);
       } else {
         setIsCollapsed(false);
       }
     };
 
+    // Set initial state based on the current path
+    if (location.pathname === '/chatpage') {
+      setIsCollapsed(true);
+    }
+
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [location.pathname]); // Add location.pathname as a dependency
 
   return (
     <>
@@ -54,7 +60,7 @@ const Navbar = () => {
               </div>
 
               {/* Right side - Try Demo Button */}
-              {!isCollapsed && (
+              {!isCollapsed && location.pathname !== '/chatpage' && (
                 <div className="flex items-center ml-auto">
                   <button
                     onClick={goToChatbot}
