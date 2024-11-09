@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { EcoAdvisor } from './components/EcoAdvisor';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home'; // Import the Home component
-import Chatpage from './pages/Chatpage'; // Import the Chatpage component
-import './App.css';  // Changed from './styles/index.css'
+import Home from './pages/Home';
+import Chatpage from './pages/Chatpage';
+import './App.css';
 import { About } from './components/about/About';
+import LoadingScreen from './components/LoadingScreen'; // Import the LoadingScreen component
 
 function App() {
-  console.log('Rendering App component');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000); // Adjust the duration to match your animation
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <LoadingScreen />;
+  }
+
   return (
     <Router>
       <Routes>

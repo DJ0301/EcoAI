@@ -4,11 +4,11 @@ import './Herotwo.css'; // Import a CSS file for styling
 
 export const Herotwo = () => {
   return (
-    <div className="herotwo-container plant">
+    <div className="herotwo-container">
       <div className="herotwo-half">
         <Model />
       </div>
-      <div className="herotwo-half">
+      <div className="herotwo-half plant">
         <div className="mx-auto max-w-screen-xl text-center lg:px-12">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
             Your partner in sustainable living 

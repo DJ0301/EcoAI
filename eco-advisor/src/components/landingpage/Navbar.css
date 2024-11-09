@@ -11,3 +11,35 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 } 
+
+.econav {
+    color: #2ecc71; /* Green color for 'Eco' */
+    animation-delay: 0s;
+  }
+  
+  .auranav {
+    color: #3498db; /* Blue color for 'Aura' */
+    animation-delay: 0.75s;
+  }
+  
+.navbar {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.navbar.floating {
+  width: 90%;
+}
+
+.navbar.collapsed {
+  width: auto;
+  padding: 0.5rem 1rem;
+}
+  
