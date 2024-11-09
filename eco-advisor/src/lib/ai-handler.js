@@ -23,9 +23,9 @@ export async function handleUserMessage(message, messageHistory = []) {
         ...messageHistory,
         { role: 'user', content: message }
       ],
-      model: 'mixtral-8x7b-32768',
-      temperature: 0.5,
-      max_tokens: 2048,
+      model: 'llama-3.2-90b-vision-preview',
+      temperature: 0.3,
+      max_tokens: 204800,
       stream: false,
     });
 
@@ -46,9 +46,9 @@ export async function analyzeProductLink(productLink) {
           content: `Analyze this product for environmental impact and required eco-friendly certifications: ${productLink}`
         }
       ],
-      model: 'mixtral-8x7b-32768',
-      temperature: 0.5,
-      max_tokens: 2048,
+      model: 'llama-3.2-90b-vision-preview',
+      temperature: 0.3,
+      max_tokens: 204800,
       stream: false,
     });
 
