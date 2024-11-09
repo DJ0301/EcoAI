@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 // import Textarea from 'react-textarea-autosize';
 // import { SendIcon } from 'lucide-react';
 import { handleChat } from '../api/chat';  // Add this import
@@ -7,9 +7,10 @@ import { EmptyScreen } from './EmptyScreen';  // Add this import
 export function EcoAdvisor() {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  // eslint-disable-next-line no-unused-vars
   const [showLinkInput, setShowLinkInput] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
   const messageInputRef = useRef(null);
+  const messagesEndRef = useRef(null);
 
   const handleSubmit = async (message, productLink = '') => {
     try {
@@ -45,44 +46,65 @@ export function EcoAdvisor() {
     }
   };
 
+  // Auto-scroll to the bottom when messages change
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages]);
+
   return (
-    <div className="chat-container">
-      {messages.length === 0 ? (
-        <EmptyScreen submitMessage={handleSubmit} />
-      ) : (
-        <div className="messages">
-          {messages.map((message) => (
-            <div 
-              key={message.id} 
-              className={`message ${message.role}`}
-            >
-              {message.content}
-            </div>
-          ))}
-          {isLoading && <div className="message assistant">...</div>}
-        </div>
-      )}
-      
-      <form 
-        onSubmit={(e) => {
-          e.preventDefault();
-          const message = messageInputRef.current.value;
-          if (message.trim()) {
-            handleSubmit(message);
-            messageInputRef.current.value = '';
-          }
-        }}
-      >
-        <input
-          ref={messageInputRef}
-          type="text"
-          placeholder="Type your message..."
-          disabled={isLoading}
-        />
-        <button type="submit" disabled={isLoading}>
-          Send
+    <div className={`chat-container ${isMinimized ? 'minimized' : ''}`}>
+      <div className="chat-header">
+        <h2>Eco Advisor</h2>
+        <button 
+          className="minimize-button" 
+          onClick={() => setIsMinimized(!isMinimized)}
+        >
+          {isMinimized ? '🔼' : '🔽'}
         </button>
-      </form>
+      </div>
+      {!isMinimized && (
+        <>
+          {messages.length === 0 ? (
+            <EmptyScreen submitMessage={handleSubmit} />
+          ) : (
+            <div className="messages">
+              {messages.map((message) => (
+                <div 
+                  key={message.id} 
+                  className={`message ${message.role}`}
+                >
+                  {message.content}
+                </div>
+              ))}
+              {isLoading && <div className="message assistant">...</div>}
+              <div ref={messagesEndRef} />
+            </div>
+          )}
+          
+          <form 
+            onSubmit={(e) => {
+              e.preventDefault();
+              const message = messageInputRef.current.value;
+              if (message.trim()) {
+                handleSubmit(message);
+                messageInputRef.current.value = '';
+              }
+            }}
+          >
+            <input
+              ref={messageInputRef}
+              type="text"
+              placeholder="Type your message..."
+              disabled={isLoading}
+            />
+            <button type="submit" disabled={isLoading}>
+              Send
+            </button>
+          </form>
+        </>
+      )}
     </div>
   );
 }
