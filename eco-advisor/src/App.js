@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} /> {/* Landing page route */}
       <Route path="/eco-advisor" element={<EcoAdvisor />} /> 
-        <Route path="/chatpage" element={<Chatpage />} /> {/* Chatbot page route */}
+        <Route path="/chatpage" element={<Chatpage />} /> Chatbot page route
         <Route path="/about" element={<About />} /> {/* Chatbot page route */}
 
       </Routes>

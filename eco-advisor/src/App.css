@@ -121,3 +121,6 @@ button:disabled {
 .message a:hover {
   color: #1565c0; /* Darker blue on hover */
 }
+.plant {
+  background-color: #c7fff3;
+}
