@@ -16,17 +16,8 @@ const Navbar = () => {
   };
 
   // State to toggle dark mode
-  const [darkMode, setDarkMode] = useState(false);
+ 
 
-  // Toggle dark mode function
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    if (!darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  };
 
   return (
     <>
@@ -37,12 +28,34 @@ const Navbar = () => {
       ) : (
         <header>
           <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
-            <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-              {/* Eco-Friendly Logo with Product Name */}
-              <a href="/" className="flex items-center mx-auto">
-                <img src="logo1.png" alt="EcoAura Logo" className="h-8 w-auto" />
-                <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white ml-2">ECOAURA</span>
-              </a>
+            <div className="flex justify-between items-center mx-auto max-w-screen-xl">
+              {/* Left side - Logo and Product Name */}
+              <div className="flex items-center">
+                <a href="/" className="flex items-center">
+                  <img src="logo2.png" alt="EcoAura Logo" className="h-10 w-auto" />
+                  <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white ml-2">ECOAURA</span>
+                </a>
+              </div>
+
+              {/* Center - About Button */}
+              <div className="flex">
+                <button
+                  onClick={() => navigate('/about')}
+                  className="text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white font-medium mx-4"
+                >
+                  About
+                </button>
+              </div>
+
+              {/* Right side - Try Demo Button */}
+              <div className="flex items-center">
+                <button
+                  onClick={goToChatbot}
+                  className="bg-green-600 text-white hover:bg-green-700 font-medium py-2 px-4 rounded"
+                >
+                  Try Demo
+                </button>
+              </div>
             </div>
           </nav>
         </header>

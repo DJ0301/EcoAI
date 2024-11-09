@@ -4,7 +4,7 @@ import './Herotwo.css'; // Import a CSS file for styling
 
 export const Herotwo = () => {
   return (
-    <div className="herotwo-container">
+    <div className="herotwo-container plant">
       <div className="herotwo-half">
         <Model />
       </div>
@@ -20,4 +20,4 @@ export const Herotwo = () => {
       </div>
     </div>
   );
-}
+};
