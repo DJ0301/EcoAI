@@ -30,7 +30,7 @@ export async function handleChat(message, productLink = '', messageHistory = [])
           content: prompt
         }
       ],
-      model: 'mixtral-8x7b-32768',
+      model: 'llama-3.2-90b-vision-preview',
       temperature: 0.7,
       max_tokens: 2048,
       stream: false,
