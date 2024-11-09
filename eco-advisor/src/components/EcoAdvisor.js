@@ -6,12 +6,14 @@ export function EcoAdvisor() {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
-  const [showInitialBubbles, setShowInitialBubbles] = useState(true);  // Add state for initial bubbles
+  const [showInitialBubbles, setShowInitialBubbles] = useState(true);
+  const [isRecording, setIsRecording] = useState(false);
   const messageInputRef = useRef(null);
   const messagesEndRef = useRef(null);
+  const recognitionRef = useRef(null);
 
   const handleSubmit = async (message, productLink) => {
-    if (showInitialBubbles) setShowInitialBubbles(false); // Hide bubbles on first message
+    if (showInitialBubbles) setShowInitialBubbles(false);
 
     try {
       setIsLoading(true);
@@ -40,6 +42,42 @@ export function EcoAdvisor() {
     }
   };
 
+  const startVoiceRecognition = () => {
+    if (!('webkitSpeechRecognition' in window)) {
+      alert('Your browser does not support speech recognition. Please try a different browser.');
+      return;
+    }
+
+    if (isRecording) {
+      recognitionRef.current.stop();
+      setIsRecording(false);
+      return;
+    }
+
+    const recognition = new window.webkitSpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      messageInputRef.current.value = transcript;
+    };
+
+    recognition.onerror = (event) => {
+      console.error('Speech recognition error:', event.error);
+      setIsRecording(false);
+    };
+
+    recognition.onend = () => {
+      setIsRecording(false);
+    };
+
+    recognitionRef.current = recognition;
+    recognition.start();
+    setIsRecording(true);
+  };
+
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -58,19 +96,19 @@ export function EcoAdvisor() {
                   <p className="mb-6">Your AI-powered assistant for sustainable product choices</p>
                   <div className="button-container flex flex-row gap-4 flex-wrap justify-center">
                     <button 
-                      onClick={() => handleSubmit('search product')}
+                      onClick={() => handleSubmit('Can you help me find an eco-friendly product?')}
                       className="example-button bg-green-600 text-white hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 font-medium py-2 px-4 rounded-lg transition-all duration-300"
                     >
                       🔍 Search for an eco-friendly product
                     </button>
                     <button 
-                      onClick={() => handleSubmit('Tell me about sustainable materials')}
+                      onClick={() => handleSubmit('What are some sustainable materials I should know about?')}
                       className="example-button bg-green-600 text-white hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 font-medium py-2 px-4 rounded-lg transition-all duration-300"
                     >
                       🌱 Learn about sustainable materials
                     </button>
                     <button 
-                      onClick={() => handleSubmit('How can I reduce my carbon footprint?')}
+                      onClick={() => handleSubmit('What are some tips to reduce my carbon footprint?')}
                       className="example-button bg-green-600 text-white hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 font-medium py-2 px-4 rounded-lg transition-all duration-300"
                     >
                       🌍 Carbon footprint tips
@@ -128,6 +166,14 @@ export function EcoAdvisor() {
               disabled={isLoading}
               className="flex-grow p-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400"
             />
+            <button 
+              type="button"
+              onClick={startVoiceRecognition}
+              className={`bg-yellow-300 text-white hover:bg-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 font-medium py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center ${isRecording ? 'opacity-50' : ''}`}
+              disabled={isRecording}
+            >
+              🎤
+            </button>
             <button 
               type="submit" 
               disabled={isLoading}
