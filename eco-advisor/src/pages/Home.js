@@ -8,7 +8,7 @@ import { Herotwo } from '../components/landingpage/Herotwo';
 import { Footer } from '../components/landingpage/Footer';
 import { ContentOne } from '../components/landingpage/ContentOne';
 import { ContentTwo } from '../components/landingpage/ContentTwo';
-// import Reviews from '../components/landingpage/Reviews';
+import Reviews from '../components/landingpage/Reviews';
 
 const Home = () => 
 // {/* <LandingPage />; */}
@@ -19,9 +19,9 @@ const Home = () =>
         <Navbar></Navbar>
         <Herotwo></Herotwo>
         <Hero></Hero>
-        <ContentOne></ContentOne>
-        {/* <Reviews></Reviews> */}
         <ContentTwo></ContentTwo>
+        <Reviews></Reviews>
+        <ContentOne></ContentOne>
         <Footer></Footer>
       </div>
     );

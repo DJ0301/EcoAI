@@ -6,7 +6,7 @@ const LandingPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleRedirect = () => {
+  const goToChatbot = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -14,35 +14,46 @@ const LandingPage = () => {
     }, 2000);
   };
 
-  const imageUrl = 'https://images.unsplash.com/photo-1563391506244-af91a410fcc9?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZWNvJTIwZnJpZW5kbHklMjBwcm9kdWN0fGVufDB8fDB8fHwy';
-
   return (
     <>
-      {loading ? (
-        <div className="flex items-center justify-center h-screen">
-          <div className="loader"></div>
-        </div>
-      ) : (
-        <section className="bg-white dark:bg-gray-900">
-          <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-            <div className="mr-auto place-self-center lg:col-span-7">
-              <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
-                Choose Better for the Planet with Eco-Friendly Alternatives
-              </h1>
-              <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-                Make sustainable choices simple. Our recommendation engine helps you discover eco-friendly products tailored to your lifestyle, from ethically sourced essentials to low-impact alternatives for everyday items.
-              </p>
-              <button onClick={handleRedirect} className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 dark:focus:ring-green-900">
+      <div className="bg-gray-50 dark:bg-gray-900 h-screen flex items-center justify-center">
+        <div className="max-w-screen-xl px-4 mx-auto lg:px-12 w-full">
+          {/* Main content container */}
+          <div className="text-center">
+            <h1 className="mb-6 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+              Choose Better for the Planet
+            </h1>
+          </div>
+
+          {/* Search bar and button section */}
+          <div className="flex justify-center items-center space-x-4">
+            <div className="w-full md:w-1/2">
+              <form className="flex items-center w-full">
+                <label htmlFor="simple-search" className="sr-only">Search</label>
+                <div className="relative w-full">
+                  <input 
+                    type="text" 
+                    id="simple-search" 
+                    className="block w-full p-3 pl-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
+                    placeholder="What are some tips to reduce my carbon footprint?" 
+                    required 
+                  />
+                </div>
+              </form>
+            </div>
+
+            {/* Try it button */}
+            <div>
+              <button
+                onClick={goToChatbot}
+                className="bg-green-600 text-white hover:bg-green-700 font-medium py-2 px-4 rounded-lg focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+              >
                 Try Demo
-                <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
               </button>
             </div>
-            <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-              <img src={imageUrl} alt="Eco-Friendly Products" />
-            </div>                
           </div>
-        </section>
-      )}
+        </div>
+      </div>
     </>
   );
 };
