@@ -1,22 +1,32 @@
 import React from 'react';
 
-
 export const ContentOne = () => {
   return (
-    <section >
-      <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-        <div className="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
-          <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
-            Empower Your Eco-Conscious Lifestyle with EcoAura
-          </h2>
-          <p className="mb-4 font-light text-gray-700 dark:text-gray-300">
-            At EcoAura, we believe that every choice matters. Our platform is designed to help you seamlessly integrate eco-friendly practices into your daily life. Discover products that align with your values, reduce your environmental impact, and support ethical sourcing. Whether you're just starting your sustainability journey or are a seasoned eco-warrior, EcoAura is here to guide you every step of the way.
-          </p>
-          <p className="mb-4 font-medium text-gray-700 dark:text-gray-300">
-            Experience the satisfaction of making choices that benefit both you and the planet. Join us in promoting sustainable consumer behavior, educating yourself on eco-friendly options, and supporting brands that prioritize the environment. Together, we can make a difference.
-          </p>
+    <>
+      <section className="bg-white dark:bg-gray-900 py-0">
+        <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+          <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+            <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+            Sustainability with EcoAura
+            </h1>
+            <p className="mb-8 text-lg font-normal text-gray-900 lg:text-xl dark:text-gray-400">
+              EcoAura’s AI platform recommends eco-friendly products, helping you make sustainable, planet-friendly choices.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-4 mt-8">
+            <img
+              className="w-full rounded-lg"
+              src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGVjbyUyMGZyaWVuZGx5JTIwcHJvZHVjdHxlbnwwfHwwfHx8Mg%3D%3D"
+              alt="eco-friendly product 1"
+            />
+            <img
+              className="mt-4 w-full lg:mt-10 rounded-lg"
+              src="https://images.unsplash.com/photo-1564419320408-38e24e038739?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGVjbyUyMGZyaWVuZGx5JTIwcHJvZHVjdHxlbnwwfHwwfHx8Mg%3D%3D"
+              alt="eco-friendly product 2"
+            />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
