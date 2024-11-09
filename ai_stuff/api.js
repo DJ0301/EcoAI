@@ -128,50 +128,9 @@ async function main(inputValue, inputType = 'chat', outputType = 'chat', stream 
   "session_id": "",
   "should_store_message": true
 },
-"SplitText-1Eh8k": {
-  "chunk_overlap": 200,
-  "chunk_size": 1000,
-  "separator": "\n"
-},
-"File-A2n5n": {
-  "path": "eco_friendly_products.pdf",
-  "silent_errors": false
-},
-"AstraVectorStoreComponent-b6p9u": {
-  "api_endpoint": "https://35919421-e0a8-42fd-a0a0-7c1f94b8367b-us-east-2.apps.astra.datastax.com",
-  "batch_size": null,
-  "bulk_delete_concurrency": null,
-  "bulk_insert_batch_concurrency": null,
-  "bulk_insert_overwrite_concurrency": null,
-  "collection_indexing_policy": "",
-  "collection_name": "test",
-  "embedding_service": "Embedding Model",
-  "metadata_indexing_exclude": "",
-  "metadata_indexing_include": "",
-  "metric": "",
-  "namespace": "",
-  "number_of_results": 4,
-  "pre_delete_collection": false,
-  "search_filter": {},
-  "search_input": "",
-  "search_score_threshold": 0,
-  "search_type": "Similarity",
-  "setup_mode": "Sync",
-  "token": "AstraCS:ERGkPqEKjMxQSvbkUwviaBEH:e35f7297b543e07b347f8deadfa404332c6d42df29af4e68e56a9f621bca3ce5"
-},
 "note-34IK9": {},
 "note-AsNSV": {},
 "note-249FK": {},
-"HuggingFaceInferenceAPIEmbeddings-e77E1": {
-  "api_key": "HF_API_KEY",
-  "inference_endpoint": "https://api-inference.huggingface.co/models/",
-  "model_name": "nvidia/NV-Embed-v2"
-},
-"HuggingFaceInferenceAPIEmbeddings-dzC86": {
-  "api_key": "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",
-  "inference_endpoint": "https://api-inference.huggingface.co/models/",
-  "model_name": "nvidia/NV-Embed-v2"
-},
 "GroqModel-RAOBx": {
   "groq_api_base": "https://api.groq.com",
   "groq_api_key": "GROQ_API_KEY",
@@ -182,19 +141,6 @@ async function main(inputValue, inputType = 'chat', outputType = 'chat', stream 
   "stream": false,
   "system_message": "You are a Eco Friendly Products AI Advisor bot and you can help users, identify, find and buy Eco Friendly Products and calculate their products carbon footprint, step by step. You can let the user give product link and return product eco friendly status, as many times as they want and ask to process with getting required certifications for it. You can let the user know relevant eco friendly certifications when ever user shows a product he is interested in, as many times as they want. You and the user can discuss about sustainability and eco friendly products prices and the user can share their goals, or get advices.  If the user wants to sell products, or complete another impossible task, respond that you are a eco friendly products assistant and cannot do that.  Besides that, you can also chat with users and do some calculations or share suggestions if needed.",
   "temperature": 0.3
-},
-"SpiderTool-F6n1J": {
-  "blacklist": "",
-  "depth": null,
-  "limit": null,
-  "metadata": false,
-  "mode": "scrape",
-  "params": {},
-  "readability": false,
-  "request_timeout": null,
-  "spider_api_key": "",
-  "url": "",
-  "whitelist": ""
 },
 "Prompt-mB2cg": {
   "template": "{context}\n{links}\n---\n\nGiven the context above, and the relevant links answer the question as best as possible and list the sources mentioned in the links.\n\nQuestion: {question}\n\nAnswer: \n\n\nSources: ",
