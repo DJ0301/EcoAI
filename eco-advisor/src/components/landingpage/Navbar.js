@@ -66,7 +66,7 @@ const Navbar = () => {
                     onClick={goToChatbot}
                     className="bg-green-600 text-white hover:bg-green-700 font-medium py-2 px-4 rounded"
                   >
-                    Try Demo
+                    Get Started
                   </button>
                 </div>
               )}
