@@ -13,7 +13,7 @@ export const Footer = () => {
         </p>
         <div>
           <a
-            href="#"
+            href="/about"
             className="text-green-600 hover:text-green-700 font-medium"
           >
             Learn more about ECOAURA

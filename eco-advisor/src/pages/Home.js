@@ -8,6 +8,8 @@ import { Footer } from '../components/landingpage/Footer';
 import { ContentOne } from '../components/landingpage/ContentOne';
 import { ContentTwo } from '../components/landingpage/ContentTwo';
 import Reviews from '../components/landingpage/Reviews';
+import { Herotwo } from '../components/landingpage/Herotwo';
+
 
 const Home = () => 
 // {/* <LandingPage />; */}
@@ -16,6 +18,7 @@ const Home = () =>
       
       <div>
         <Navbar></Navbar>
+        <Herotwo></Herotwo>
         <Hero></Hero>
         <ContentOne></ContentOne>
         <Reviews></Reviews>
