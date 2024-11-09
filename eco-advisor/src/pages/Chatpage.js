@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/landingpage/Navbar';
 import { Chatbot } from '../components/chatpagee/Chatbot';
+import { EcoAdvisor } from '../components/EcoAdvisor';
 
 
 const Chatpage = () => 
@@ -10,7 +11,7 @@ const Chatpage = () =>
       
       <div>
         <Navbar></Navbar>
-        <Chatbot></Chatbot>
+        <EcoAdvisor></EcoAdvisor>
       </div>
     );
   };
