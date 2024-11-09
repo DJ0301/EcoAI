@@ -111,3 +111,13 @@ button:disabled {
   background-color: #e0f2f1; /* Very light green when disabled */
   cursor: not-allowed;
 }
+
+.message a {
+  color: #1e88e5; /* Blue color for links */
+  text-decoration: underline; /* Underline to indicate it's a link */
+  transition: color 0.3s;
+}
+
+.message a:hover {
+  color: #1565c0; /* Darker blue on hover */
+}
