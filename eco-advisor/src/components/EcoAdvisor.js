@@ -6,10 +6,13 @@ export function EcoAdvisor() {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
+  const [showInitialBubbles, setShowInitialBubbles] = useState(true);  // Add state for initial bubbles
   const messageInputRef = useRef(null);
   const messagesEndRef = useRef(null);
 
-  const handleSubmit = async (message, productLink = '') => {
+  const handleSubmit = async (message, productLink) => {
+    if (showInitialBubbles) setShowInitialBubbles(false); // Hide bubbles on first message
+
     try {
       setIsLoading(true);
       setMessages(prev => [...prev, {
@@ -79,7 +82,7 @@ export function EcoAdvisor() {
                   {messages.map((message) => (
                     <div 
                       key={message.id} 
-                      className={`message ${message.role === 'user' ? 'user-message bg-green-100 dark:bg-green-800' : 'assistant-message bg-gray-100 dark:bg-gray-800'} p-4 rounded-lg shadow-sm`}
+                      className={`message ${message.role === 'user' ? 'user-message bg-green-100 dark:bg-green-800 text-right ml-auto' : 'assistant-message bg-gray-100 dark:bg-gray-800 text-left mr-auto'} p-4 rounded-lg shadow-sm max-w-md`}
                     >
                       <ReactMarkdown
                         components={{
@@ -94,7 +97,7 @@ export function EcoAdvisor() {
                       </ReactMarkdown>
                     </div>
                   ))}
-                  {isLoading && <div className="message assistant-message bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">Aura is thinking...</div>}
+                  {isLoading && <div className="message assistant-message bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-left mr-auto">Aura is thinking...</div>}
                   <div ref={messagesEndRef} />
                 </div>
               )}
@@ -118,19 +121,19 @@ export function EcoAdvisor() {
             <input
               ref={messageInputRef}
               type="text"
-              placeholder="How can Auro help you today?"
+              placeholder="How can Aura help you today?"
               disabled={isLoading}
               className="flex-grow p-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400"
             />
             <button 
-  type="submit" 
-  disabled={isLoading}
-  className="bg-green-600 text-white hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 font-medium py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center"
->
-  <svg className="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
-  </svg>
-</button>
+              type="submit" 
+              disabled={isLoading}
+              className="bg-green-600 text-white hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 font-medium py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center"
+            >
+              <svg className="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
+              </svg>
+            </button>
           </form>
         </div>
       </div>

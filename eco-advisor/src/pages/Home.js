@@ -7,7 +7,7 @@ import Navbar from '../components/landingpage/Navbar';
 import { Footer } from '../components/landingpage/Footer';
 import { ContentOne } from '../components/landingpage/ContentOne';
 import { ContentTwo } from '../components/landingpage/ContentTwo';
-
+import Reviews from '../components/landingpage/Reviews';
 
 const Home = () => 
 // {/* <LandingPage />; */}
@@ -18,6 +18,7 @@ const Home = () =>
         <Navbar></Navbar>
         <Hero></Hero>
         <ContentOne></ContentOne>
+        <Reviews></Reviews>
         <ContentTwo></ContentTwo>
         <Footer></Footer>
       </div>
