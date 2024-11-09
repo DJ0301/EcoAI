@@ -1,0 +1,50 @@
+.loading-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5; /* Pearl white background */
+    color: #333;
+    font-size: 3rem;
+    font-weight: bold;
+    overflow: hidden;
+  }
+  
+  .loading-text {
+    display: flex;
+    gap: 0.5rem;
+    animation: fadeInOut 3s infinite;
+  }
+  
+  .eco, .aura {
+    display: inline-block;
+    animation: bounce 1.5s infinite alternate;
+  }
+  
+  .eco {
+    color: #2ecc71; /* Green color for 'Eco' */
+    animation-delay: 0s;
+  }
+  
+  .aura {
+    color: #3498db; /* Blue color for 'Aura' */
+    animation-delay: 0.75s;
+  }
+  
+  @keyframes bounce {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-20px);
+    }
+  }
+  
+  @keyframes fadeInOut {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }

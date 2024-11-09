@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { handleChat } from '../api/chat';
 import ReactMarkdown from 'react-markdown';
+import botIcon from '../boticon.png';
 
 export function EcoAdvisor() {
   const [messages, setMessages] = useState([]);
@@ -25,11 +26,14 @@ export function EcoAdvisor() {
 
       const response = await handleChat(message, productLink, messages);
       
+      const assistantMessageId = Date.now() + 1;
       setMessages(prev => [...prev, {
-        id: Date.now() + 1,
+        id: assistantMessageId,
         role: 'assistant',
-        content: response
+        content: ''
       }]);
+
+      await simulateTypingEffect(response, assistantMessageId);
     } catch (error) {
       console.error('Error:', error);
       setMessages(prev => [...prev, {
@@ -39,6 +43,15 @@ export function EcoAdvisor() {
       }]);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const simulateTypingEffect = async (text, messageId) => {
+    for (let i = 0; i <= text.length; i++) {
+      await new Promise(resolve => setTimeout(resolve, 6));
+      setMessages(prev => prev.map(msg => 
+        msg.id === messageId ? { ...msg, content: text.substring(0, i) } : msg
+      ));
     }
   };
 
@@ -92,24 +105,24 @@ export function EcoAdvisor() {
             <>
               {messages.length === 0 ? (
                 <div className="empty-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-12 m-12 rounded-lg shadow-lg text-center">
-                  <h2 className="text-3xl font-bold mb-4 text-green-700 dark:text-green-400">Welcome to Eco Advisor</h2>
-                  <p className="mb-6">Your AI-powered assistant for sustainable product choices</p>
+                  <h2 className="text-4xl font-bold mb-4 text-green-700 dark:text-green-400 font-sans">Welcome to Eco Advisor</h2>
+                  <p className="mb-6 font-light text-lg">Your AI-powered assistant for sustainable product choices</p>
                   <div className="button-container flex flex-row gap-4 flex-wrap justify-center">
                     <button 
                       onClick={() => handleSubmit('Can you help me find an eco-friendly product?')}
-                      className="example-button bg-green-600 text-white hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 font-medium py-2 px-4 rounded-lg transition-all duration-300"
+                      className="example-button bg-green-600 text-white hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 font-medium py-3 px-5 rounded-lg transition-all duration-300 text-lg"
                     >
                       🔍 Search for an eco-friendly product
                     </button>
                     <button 
                       onClick={() => handleSubmit('What are some sustainable materials I should know about?')}
-                      className="example-button bg-green-600 text-white hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 font-medium py-2 px-4 rounded-lg transition-all duration-300"
+                      className="example-button bg-green-600 text-white hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 font-medium py-3 px-5 rounded-lg transition-all duration-300 text-lg"
                     >
                       🌱 Learn about sustainable materials
                     </button>
                     <button 
                       onClick={() => handleSubmit('What are some tips to reduce my carbon footprint?')}
-                      className="example-button bg-green-600 text-white hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 font-medium py-2 px-4 rounded-lg transition-all duration-300"
+                      className="example-button bg-green-600 text-white hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 font-medium py-3 px-5 rounded-lg transition-all duration-300 text-lg"
                     >
                       🌍 Carbon footprint tips
                     </button>
@@ -120,10 +133,15 @@ export function EcoAdvisor() {
                   {messages.map((message) => (
                     <div 
                       key={message.id} 
-                      className={`message ${message.role === 'user' ? 'user-message bg-green-100 dark:bg-green-800 text-right ml-auto' : 'assistant-message bg-gray-100 dark:bg-gray-800 text-left mr-auto'} p-4 rounded-lg shadow-sm max-w-md`}
+                      className={`message ${message.role === 'user' ? 'user-message bg-green-100 dark:bg-green-800 text-right ml-auto' : 'assistant-message bg-gray-100 dark:bg-gray-800 text-left mr-auto'} p-4 rounded-lg shadow-sm max-w-lg font-serif text-lg`}
                     >
-                      <div className="message-header text-sm font-semibold">
-                        {message.role === 'user' ? 'USER' : 'AURA'}
+                      <div className="message-header text-base font-semibold flex items-center justify-start">
+                        {message.role === 'assistant' && (
+                          <>
+                            <img src={botIcon} alt="Bot Icon" className="mr-2 w-8 h-8" />
+                            <span className="text-xl font-bold font-sans">AURA</span>
+                          </>
+                        )}
                       </div>
                       <ReactMarkdown
                         components={{
@@ -138,7 +156,6 @@ export function EcoAdvisor() {
                       </ReactMarkdown>
                     </div>
                   ))}
-                  {isLoading && <div className="message assistant-message bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-left mr-auto">Aura is thinking...</div>}
                   <div ref={messagesEndRef} />
                 </div>
               )}
@@ -164,12 +181,12 @@ export function EcoAdvisor() {
               type="text"
               placeholder="How can Aura help you today?"
               disabled={isLoading}
-              className="flex-grow p-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400"
+              className="flex-grow p-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400 font-mono text-lg"
             />
             <button 
               type="button"
               onClick={startVoiceRecognition}
-              className={`bg-yellow-300 text-white hover:bg-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 font-medium py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center ${isRecording ? 'opacity-50' : ''}`}
+              className={`bg-yellow-300 text-white hover:bg-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 font-medium py-3 px-5 rounded-lg transition-all duration-300 flex items-center justify-center text-lg ${isRecording ? 'opacity-50' : ''}`}
               disabled={isRecording}
             >
               🎤
@@ -177,7 +194,7 @@ export function EcoAdvisor() {
             <button 
               type="submit" 
               disabled={isLoading}
-              className="bg-green-600 text-white hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 font-medium py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center"
+              className="bg-green-600 text-white hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 font-medium py-3 px-5 rounded-lg transition-all duration-300 flex items-center justify-center text-lg"
             >
               <svg className="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
