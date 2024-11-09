@@ -18,10 +18,11 @@ const Home = () =>
       <div>
         <Navbar></Navbar>
         <Herotwo></Herotwo>
+        <ContentOne></ContentOne>
+
+        {/* <Reviews></Reviews> */}
         <Hero></Hero>
         <ContentTwo></ContentTwo>
-        <Reviews></Reviews>
-        <ContentOne></ContentOne>
         <Footer></Footer>
       </div>
     );
