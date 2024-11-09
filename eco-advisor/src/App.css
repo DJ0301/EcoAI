@@ -4,10 +4,10 @@
   height: 100vh;
   max-width: 100%;
   overflow: hidden;
-  background-color: #e8f5e9; /* Light green background */
-  border: 1px solid #c5e1a5; /* Light green border */
+  background-color: #f0f4f3; /* Very light green background */
+  border: 1px solid #d0e2dc; /* Subtle green border */
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative;
 }
 
@@ -15,86 +15,99 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  background-color: #a5d6a7; /* Medium green for header */
-  border-bottom: 1px solid #c5e1a5;
+  padding: 8px 16px;
+  background-color: #81c784; /* Soft green for header */
+  border-bottom: 1px solid #d0e2dc;
   border-radius: 8px 8px 0 0;
 }
 
 .chat-header h2 {
   margin: 0;
   color: #ffffff;
+  font-size: 18px;
 }
 
 .minimize-button {
   background: none;
   border: none;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
   transition: color 0.3s;
 }
 
 .minimize-button:hover {
-  color: #4caf50; /* Slightly darker green on hover */
+  color: #388e3c; /* Darker green on hover */
 }
 
 .messages {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
-  padding: 10px;
-  background-color: #f1f8e9; /* Even lighter green for messages area */
+  padding: 16px;
+  background-color: #f9fdfb; /* Very light green for messages area */
 }
 
 .message {
-  margin-bottom: 10px;
-  padding: 10px;
+  margin-bottom: 12px;
+  padding: 12px;
   border-radius: 8px;
-  max-width: 80%;
+  max-width: 75%;
+  font-size: 14px;
+  line-height: 1.4;
+  display: inline-block;
 }
 
 .message.user {
-  background-color: #a5d6a7; /* User message in medium green */
+  background-color: #a5d6a7; /* User message in soft green */
   align-self: flex-end;
+  color: #2e7d32; /* Darker text for contrast */
+  text-align: right;
+  margin-left: auto; /* Aligns user message to the right */
 }
 
 .message.assistant {
   background-color: #c8e6c9; /* Assistant message in light green */
   align-self: flex-start;
+  color: #1b5e20; /* Darker text for contrast */
+  text-align: left;
+  margin-right: auto; /* Aligns assistant message to the left */
 }
 
 form {
   display: flex;
-  padding: 10px;
-  border-top: 1px solid #c5e1a5; /* Light green border */
-  background-color: #e8f5e9; /* Match the chat container */
+  padding: 8px 16px;
+  border-top: 1px solid #d0e2dc; /* Subtle green border */
+  background-color: #f0f4f3; /* Match the chat container */
   border-radius: 0 0 8px 8px;
 }
 
 input[type="text"] {
   flex: 1;
   padding: 10px;
-  border: 1px solid #c5e1a5; /* Light green border */
+  border: 1px solid #d0e2dc; /* Subtle green border */
   border-radius: 4px;
   background-color: #ffffff; /* White input background */
+  font-size: 14px;
 }
 
 button {
   margin-left: 10px;
   padding: 10px 20px;
   border: none;
-  background-color: #66bb6a; /* Darker green for button */
+  background-color: #66bb6a; /* Soft green for button */
   color: white;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-size: 14px;
 }
 
 button:hover {
-  background-color: #4caf50; /* Slightly darker green on hover */
+  background-color: #388e3c; /* Darker green on hover */
 }
 
 button:disabled {
-  background-color: #c8e6c9; /* Light green when disabled */
+  background-color: #e0f2f1; /* Very light green when disabled */
   cursor: not-allowed;
 }

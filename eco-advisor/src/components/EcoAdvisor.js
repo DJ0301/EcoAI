@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from 'react';
 // import { SendIcon } from 'lucide-react';
 import { handleChat } from '../api/chat';  // Add this import
 import { EmptyScreen } from './EmptyScreen';  // Add this import
+import ReactMarkdown from 'react-markdown';
 
 export function EcoAdvisor() {
   const [messages, setMessages] = useState([]);
@@ -73,12 +74,22 @@ export function EcoAdvisor() {
               {messages.map((message) => (
                 <div 
                   key={message.id} 
-                  className={`message ${message.role}`}
+                  className={`message ${message.role} ${message.role === 'user' ? 'user-message' : 'assistant-message'}`}
                 >
-                  {message.content}
+                  <ReactMarkdown
+                    components={{
+                      a: ({ node, ...props }) => (
+                        <a {...props} target="_blank" rel="noopener noreferrer">
+                          {props.children}
+                        </a>
+                      ),
+                    }}
+                  >
+                    {message.content}
+                  </ReactMarkdown>
                 </div>
               ))}
-              {isLoading && <div className="message assistant">...</div>}
+              {isLoading && <div className="message assistant-message">...</div>}
               <div ref={messagesEndRef} />
             </div>
           )}
