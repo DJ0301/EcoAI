@@ -12,13 +12,19 @@ export async function handleChat(message, productLink = '', messageHistory = [])
       prompt = `Analyze this product for environmental impact: ${productLink}`;
     }
 
+    // Ensure messageHistory only contains valid properties
+    const validMessageHistory = messageHistory.map(msg => ({
+      role: msg.role,
+      content: msg.content
+    }));
+
     const completion = await groq.chat.completions.create({
       messages: [
         {
           role: 'system',
           content: 'You are an eco-friendly product advisor. You help users make sustainable choices and provide environmental impact analysis.'
         },
-        ...messageHistory,
+        ...validMessageHistory,
         {
           role: 'user',
           content: prompt
