@@ -10,7 +10,6 @@ import { ContentTwo } from '../components/landingpage/ContentTwo';
 import Reviews from '../components/landingpage/Reviews';
 import { Herotwo } from '../components/landingpage/Herotwo';
 
-
 const Home = () => 
 // {/* <LandingPage />; */}
 {
