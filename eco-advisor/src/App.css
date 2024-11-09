@@ -91,19 +91,19 @@ input[type="text"] {
   font-size: 14px;
 }
 
-button {
-  margin-left: 10px;
-  padding: 10px 20px;
+.example-button {
+  background-color: #a5d6a7; /* Light green for normal state */
+  color: #2e7d32; /* Darker text for contrast */
   border: none;
-  background-color: #66bb6a; /* Soft green for button */
-  color: white;
   border-radius: 4px;
+  padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s;
   font-size: 14px;
+  margin: 5px;
 }
 
-button:hover {
+.example-button:hover {
   background-color: #388e3c; /* Darker green on hover */
 }
 
