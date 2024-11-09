@@ -23,7 +23,7 @@ export async function handleUserMessage(message, messageHistory = []) {
         ...messageHistory,
         { role: 'user', content: message }
       ],
-      model: 'llama-3.2-90b-vision-preview',
+      model: 'llama-3.2-90b-text-preview',
       temperature: 0.3,
       max_tokens: 204800,
       stream: false,
@@ -46,7 +46,7 @@ export async function analyzeProductLink(productLink) {
           content: `Analyze this product for environmental impact and required eco-friendly certifications: ${productLink}`
         }
       ],
-      model: 'llama-3.2-90b-vision-preview',
+      model: 'llama-3.2-90b-text-preview',
       temperature: 0.3,
       max_tokens: 204800,
       stream: false,

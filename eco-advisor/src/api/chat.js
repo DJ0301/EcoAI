@@ -30,7 +30,7 @@ export async function handleChat(message, productLink = '', messageHistory = [])
           content: prompt
         }
       ],
-      model: 'llama-3.2-90b-vision-preview',
+      model: 'llama-3.2-90b-text-preview',
       temperature: 0.7,
       max_tokens: 2048,
       stream: false,
