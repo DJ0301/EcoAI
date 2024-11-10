@@ -14,7 +14,7 @@ export function EcoAdvisor() {
   const messagesEndRef = useRef(null);
   const recognitionRef = useRef(null);
   const location = useLocation();
-  const prefillProcessed = useRef(false); // Track if prefill has been processed
+  const prefillProcessed = useRef(false);
 
   const funFacts = [
     "Bamboo grows faster than any other plant on Earth, making it a highly sustainable resource.",
