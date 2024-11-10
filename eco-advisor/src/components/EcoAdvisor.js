@@ -14,7 +14,7 @@ export function EcoAdvisor() {
   const messagesEndRef = useRef(null);
   const recognitionRef = useRef(null);
   const location = useLocation();
-  const prefillProcessed = useRef(false); // Track if prefill has been processed
+  const prefillProcessed = useRef(false);
 
   useEffect(() => {
     if (location.state?.prefillMessage && messages.length === 0 && !prefillProcessed.current) {
@@ -109,12 +109,12 @@ export function EcoAdvisor() {
   }, [messages]);
 
   return (
-    <div className="container mx-auto p-6">
-      <div className={`chat-container ${isMinimized ? 'minimized' : ''} bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-6 rounded-lg shadow-lg h-full flex flex-col`}>
-        <div className="flex-grow overflow-y-auto mb-2">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+      <div className={`chat-container ${isMinimized ? 'minimized' : ''} bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-6 rounded-lg shadow-lg h-full flex flex-col`} style={{ height: '600px', width: '1200px' }}>
+        <div className="flex-grow overflow-y-auto mb-2" style={{ maxHeight: '500px' }}>
           {!isMinimized && (
             <>
-              {messages.length === 0 ? (
+              {messages.length === 0 && !isLoading ? (
                 <div className="empty-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-12 m-12 rounded-lg shadow-lg text-center">
                   <h2 className="text-4xl font-bold mb-4 text-green-700 dark:text-green-400 font-sans">Welcome to Eco Advisor</h2>
                   <p className="mb-6 font-light text-lg">Your AI-powered assistant for sustainable product choices</p>
@@ -174,7 +174,6 @@ export function EcoAdvisor() {
           )}
         </div>
         
-        {/* Keep the form inside the chat container */}
         <div className="mt-auto">
           <form 
             onSubmit={(e) => {

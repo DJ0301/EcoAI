@@ -1,4 +1,5 @@
 import React from 'react';
+import './ContentOne.css'; // Import the CSS file for styling
 
 export const ContentOne = () => {
   return (
@@ -6,8 +7,8 @@ export const ContentOne = () => {
       <section className="bg-white dark:bg-gray-900 py-0">
         <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
           <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-            <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-            Sustainability with EcoAura
+            <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none contentone-text-gradient md:text-5xl lg:text-6xl">
+              Sustainability with EcoAura
             </h1>
             <p className="mb-8 text-lg font-normal text-gray-900 lg:text-xl dark:text-gray-400">
               EcoAura’s AI platform recommends eco-friendly products, helping you make sustainable, planet-friendly choices.

@@ -23,7 +23,7 @@ const LandingPage = () => {
         <SplineEnv />
         <div className="content-container">
           <div className="text-center">
-            <h1 className="mb-6 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
+            <h1 className="mb-6 text-4xl font-extrabold tracking-tight leading-none text-gradient md:text-5xl lg:text-6xl">
               CHOOSE BETTER FOR THE PLANET.
             </h1>
           </div>
