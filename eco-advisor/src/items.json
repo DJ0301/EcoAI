@@ -1,142 +1,72 @@
 {
     "ECO001": {
-      "image_path": "/images/products/eco-bamboo-water-bottle.jpg",
+      "image_path": "/eco-bamboo-water-bottle.jpg",
       "item_name": "Eco-Friendly Bamboo Water Bottle",
       "item_link": "https://www.greengiving.eu/bamboo-bottles/thermos-bottle-with-handle",
       "green_score": 8.5,
       "price": 8.71
     },
     "ECO002": {
-      "image_path": "/images/products/solar-power-bank.jpg",
+      "image_path": "/solar-power-bank.jpg",
       "item_name": "Solar-Powered Power Bank", 
       "item_link": "https://www.digitec.ch/en/s1/product/elzle-solar-powerbank-26800-mah-25-w-9916-wh-powerbanks-18002712?tagIds=77-100",
       "green_score": 9.0,
       "price": 45.70
     },
     "ECO003": {
-      "image_path": "/images/products/recycled-backpack.jpg",
+      "image_path": "/recycled-backpack.jpg",
       "item_name": "Recycled Plastic Backpack",
-      "item_link": "/products/recycled-backpack", 
+      "item_link": "https://www.lefrik.com/products/scout-mini-black", 
       "green_score": 8.8,
       "price": 59.99
     },
     "ECO004": {
-      "image_path": "/images/products/organic-cotton-tshirt.jpg",
+      "image_path": "/organic-cotton-tshirt.jpg",
       "item_name": "Organic Cotton T-Shirt",
-      "item_link": "/products/organic-cotton-tshirt",
+      "item_link": "https://de.flyfat-shop.com/product-page/unisex-organic-cotton-t-shirt-2",
       "green_score": 7.5,
-      "price": 29.99
+      "price": 39.99
     },
     "ECO005": {
-      "image_path": "/images/products/beeswax-wraps.jpg",
+      "image_path": "/beeswax-wraps.jpg",
       "item_name": "Reusable Beeswax Food Wraps",
-      "item_link": "/products/beeswax-wraps",
+      "item_link": "https://www.beeswrap.com/collections/frontpage/products/roll",
       "green_score": 9.5,
       "price": 18.99
     },
     "ECO006": {
-      "image_path": "/images/products/biodegradable-phone-case.jpg",
+      "image_path": "/biodegradable-phone-case.jpg",
       "item_name": "Biodegradable Phone Case",
-      "item_link": "/products/biodegradable-phone-case",
+      "item_link": "https://eu.pelacase.com/products/london-fog-lil-fruity-eco-friendly-iphone-15-pro-case",
       "green_score": 8.0,
-      "price": 34.99
+      "price": 50.00
     },
     "ECO007": {
-      "image_path": "/images/products/bamboo-cutlery-set.jpg",
+      "image_path": "/bamboo-cutlery-set.jpg",
       "item_name": "Bamboo Cutlery Travel Set",
-      "item_link": "/products/bamboo-cutlery-set",
-      "green_score": 9.2,
-      "price": 15.99
+      "item_link": "https://jungleculture.eco/collections/bamboo-cutlery/products/wooden-kitchen-utensils",
+      "green_score": 8.8,
+      "price": 12.99
     },
     "ECO008": {
-      "image_path": "/images/products/hemp-yoga-mat.jpg",
+      "image_path": "/hemp-yoga-mat.jpg",
       "item_name": "Natural Hemp Yoga Mat",
-      "item_link": "/products/hemp-yoga-mat",
+      "item_link": "https://www.yogamatters.com/collections/hemp-collection/products/yogamatters-hemp-bolster-natural-choice-of-filling",
       "green_score": 8.7,
-      "price": 68.99
+      "price": 55.90
     },
     "ECO009": {
-      "image_path": "/images/products/glass-coffee-cup.jpg",
+      "image_path": "/glass-coffee-cup.jpg",
       "item_name": "Reusable Glass Coffee Cup",
-      "item_link": "/products/glass-coffee-cup",
-      "green_score": 7.8,
-      "price": 22.99
+      "item_link": "https://us.keepcup.com/brew-cork-12oz",
+      "green_score": 7.4,
+      "price": 30.95
     },
     "ECO010": {
-      "image_path": "/images/products/bamboo-toothbrush.jpg",
+      "image_path": "/bamboo-toothbrush.jpg",
       "item_name": "Bamboo Toothbrush Set",
       "item_link": "https://www.thehumble.co/products/humble-electric-toothbrush-heads",
       "green_score": 8.2,
       "price": 25.00
-    },
-    "ECO011": {
-      "image_path": "/images/products/solar-garden-lights.jpg",
-      "item_name": "Solar Garden Light Set",
-      "item_link": "/products/solar-garden-lights",
-      "green_score": 8.9,
-      "price": 39.99
-    },
-    "ECO012": {
-      "image_path": "/images/products/compost-bin.jpg",
-      "item_name": "Kitchen Compost Bin",
-      "item_link": "/products/compost-bin",
-      "green_score": 9.4,
-      "price": 32.99
-    },
-    "ECO013": {
-      "image_path": "/images/products/wool-dryer-balls.jpg",
-      "item_name": "Wool Dryer Balls",
-      "item_link": "/products/wool-dryer-balls",
-      "green_score": 8.2,
-      "price": 16.99
-    },
-    "ECO014": {
-      "image_path": "/images/products/mesh-produce-bags.jpg",
-      "item_name": "Reusable Mesh Produce Bags",
-      "item_link": "/products/mesh-produce-bags",
-      "green_score": 9.1,
-      "price": 14.99
-    },
-    "ECO015": {
-      "image_path": "/images/products/bamboo-bathroom-set.jpg",
-      "item_name": "Bamboo Bathroom Set",
-      "item_link": "/products/bamboo-bathroom-set",
-      "green_score": 8.4,
-      "price": 49.99
-    },
-    "ECO016": {
-      "image_path": "/images/products/cork-yoga-block.jpg",
-      "item_name": "Natural Cork Yoga Block",
-      "item_link": "/products/cork-yoga-block",
-      "green_score": 8.6,
-      "price": 19.99
-    },
-    "ECO017": {
-      "image_path": "/images/products/stainless-straws.jpg",
-      "item_name": "Stainless Steel Straw Set",
-      "item_link": "/products/stainless-straws",
-      "green_score": 8.3,
-      "price": 11.99
-    },
-    "ECO018": {
-      "image_path": "/images/products/eco-lunch-box.jpg",
-      "item_name": "Stainless Steel Lunch Box",
-      "item_link": "/products/eco-lunch-box",
-      "green_score": 7.9,
-      "price": 28.99
-    },
-    "ECO019": {
-      "image_path": "/images/products/plant-pots.jpg",
-      "item_name": "Biodegradable Plant Pots",
-      "item_link": "/products/plant-pots",
-      "green_score": 9.6,
-      "price": 21.99
-    },
-    "ECO020": {
-      "image_path": "/images/products/coconut-bowl.jpg",
-      "item_name": "Coconut Shell Bowl Set",
-      "item_link": "/products/coconut-bowl",
-      "green_score": 8.1,
-      "price": 25.99
     }
    }
