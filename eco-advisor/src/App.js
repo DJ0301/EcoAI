@@ -29,6 +29,7 @@ function App() {
       <Route path="/eco-advisor" element={<EcoAdvisor />} /> 
         <Route path="/chatpage" element={<Chatpage />} /> Chatbot page route
         <Route path="/about" element={<About />} /> {/* Chatbot page route */}
+        {/* <Route path="/threejs" element={<ThreeScene />} /> Chatbot page route */}
 
       </Routes>
     </Router>
