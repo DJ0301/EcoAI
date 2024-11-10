@@ -2,4 +2,23 @@
     background-color: #c7fff3;
   }
 
+.contentone-text-gradient {
+  background: radial-gradient(circle, #4caf50, #81c784, #388e3c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  animation: radial-glow 3s infinite alternate;
+}
+
+@keyframes radial-glow {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+/* Add any additional styles needed for the component */
+
   
