@@ -16,7 +16,7 @@ export const Footer = () => {
           </p>
           <div>
             <a
-              href="/contact"
+              href="mailto:rahulbiradar0601@gmail.com"
               className="text-green-600 hover:text-green-700 font-medium"
             >
               Contact Us
