@@ -16,6 +16,26 @@ export function EcoAdvisor() {
   const location = useLocation();
   const prefillProcessed = useRef(false); // Track if prefill has been processed
 
+  const funFacts = [
+    "Bamboo grows faster than any other plant on Earth, making it a highly sustainable resource.",
+    "Recycling one aluminum can saves enough energy to run a TV for three hours.",
+    "Glass is 100% recyclable and can be recycled endlessly without loss in quality or purity.",
+    "Using recycled paper for one print run of the Sunday edition of the New York Times would save 75,000 trees.",
+    "LED bulbs use up to 80% less energy than traditional incandescent bulbs."
+  ];
+
+  const [currentFunFactIndex, setCurrentFunFactIndex] = useState(0);
+
+  useEffect(() => {
+    if (isLoading) {
+      const interval = setInterval(() => {
+        setCurrentFunFactIndex(prevIndex => (prevIndex + 1) % funFacts.length);
+      }, 5000);
+
+      return () => clearInterval(interval);
+    }
+  }, [isLoading, funFacts.length]);
+
   useEffect(() => {
     if (location.state?.prefillMessage && messages.length === 0 && !prefillProcessed.current) {
       const prefillMessage = location.state.prefillMessage;
@@ -114,7 +134,7 @@ export function EcoAdvisor() {
         <div className="flex-grow overflow-y-auto mb-2">
           {!isMinimized && (
             <>
-              {messages.length === 0 ? (
+              {messages.length === 0 && !isLoading ? (
                 <div className="empty-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-12 m-12 rounded-lg shadow-lg text-center">
                   <h2 className="text-4xl font-bold mb-4 text-green-700 dark:text-green-400 font-sans">Welcome to Eco Advisor</h2>
                   <p className="mb-6 font-light text-lg">Your AI-powered assistant for sustainable product choices</p>
@@ -141,6 +161,13 @@ export function EcoAdvisor() {
                 </div>
               ) : (
                 <div className="messages space-y-4">
+                  {isLoading && (
+                    <div className="loading-fun-fact bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-4 rounded-lg shadow-lg text-center">
+                      <p className="font-light text-lg">
+                        {funFacts[currentFunFactIndex]}
+                      </p>
+                    </div>
+                  )}
                   {messages.map((message) => (
                     <div 
                       key={message.id} 
@@ -174,7 +201,6 @@ export function EcoAdvisor() {
           )}
         </div>
         
-        {/* Keep the form inside the chat container */}
         <div className="mt-auto">
           <form 
             onSubmit={(e) => {
