@@ -8,7 +8,6 @@ const Chatpage = () =>
 // {/* <LandingPage />; */}
 {
     return (
-      
       <div>
         <Navbar></Navbar>
         <EcoAdvisor></EcoAdvisor>
