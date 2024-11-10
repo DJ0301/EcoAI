@@ -1,0 +1,41 @@
+.shiny-card {
+    background: linear-gradient(135deg, #00ff99, #ffffff, #00ff99);
+    background-size: 400% 400%;
+    animation: shinyEffect 5s linear infinite;
+    transition: transform 0.3s ease, z-index 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+  }
+  
+  @keyframes shinyEffect {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .shiny-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .shiny-card.active {
+    z-index: 10;
+    position: relative;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  } 

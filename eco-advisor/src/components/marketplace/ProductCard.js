@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import itemsData from '../../items.json';
+import './ProductCard.css';
 
 export const ProductCard = () => {
   const [items, setItems] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(null);
 
   useEffect(() => {
-    // Convert the items object to an array
     const itemsArray = Object.values(itemsData);
     setItems(itemsArray);
   }, []);
+
+  const handleCardClick = (index) => {
+    setActiveIndex(index === activeIndex ? null : index);
+  };
 
   return (
     <section className="bg-gray-50 py-8 antialiased dark:bg-gray-900 md:py-12 mt-24">
@@ -17,13 +22,11 @@ export const ProductCard = () => {
           {items.map((item, index) => (
             <div 
               key={index} 
-              className="rounded-lg border border-gray-200 p-6 shadow-sm dark:border-gray-700"
-              style={{ backgroundColor: '#c7fff3' }}
+              className={`shiny-card rounded-lg border border-gray-200 p-6 shadow-sm dark:border-gray-700 ${activeIndex === index ? 'active' : ''}`}
+              onClick={() => handleCardClick(index)}
             >
               <div className="h-56 w-full">
-                <a href={item.item_link} target="_blank" rel="noopener noreferrer">
-                  <img className="mx-auto h-full object-cover" src={item.image_path} alt={item.item_name} />
-                </a>
+                <img className="mx-auto h-full object-cover" src={item.image_path} alt={item.item_name} />
               </div>
               <div className="pt-6">
                 <div className="mb-4 flex items-center justify-between">
@@ -42,6 +45,13 @@ export const ProductCard = () => {
                     ${item.price.toFixed(2)}
                   </p>
                 </div>
+                {activeIndex === index && (
+                  <div className="mt-4 text-center">
+                    <a href={item.item_link} target="_blank" rel="noopener noreferrer" className="btn">
+                      Go to Website
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           ))}
