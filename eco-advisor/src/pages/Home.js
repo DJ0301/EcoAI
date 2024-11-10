@@ -17,6 +17,7 @@ const Home = () =>
       
       <div>
         <Navbar></Navbar>
+        {/* <SplineScene></SplineScene> */}
         <Herotwo></Herotwo>
         <ContentOne></ContentOne>
 
